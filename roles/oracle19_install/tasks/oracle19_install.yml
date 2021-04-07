@@ -4,4 +4,5 @@
   become: true
   become_user: oracle
   register: command_result
-  failed_when: "'Successfully Setup Software with warning(s).' not in command_result.stdout_lines"
+  failed_when: "'Successfully Setup Software.' not in command_result.stdout_lines"
+  #failed_when: "'Successfully Setup Software with warning(s).' not in command_result.stdout_lines"

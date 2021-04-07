@@ -7,7 +7,7 @@
   loop_control:
     loop_var: item_install
   when:
-      - item.version == oracle_version
+      - item_install.version == oracle_version
       - ansible_facts['distribution_major_version'] == "7"
   become: true
 
@@ -19,6 +19,6 @@
   loop_control:
     loop_var: item_install
   when:
-      - item.version == oracle_version
+      - item_install.version == oracle_version
       - ansible_facts['distribution_major_version'] == "8"
   become: true
