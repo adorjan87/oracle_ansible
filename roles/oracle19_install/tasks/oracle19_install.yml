@@ -1,0 +1,7 @@
+---
+- name: "Install"
+  shell: "{{ oracle_home }}/runInstaller -ignorePrereq -silent -responseFile /home/oracle/install.rsp"
+  become: true
+  become_user: oracle
+  register: command_result
+  failed_when: "'Successfully Setup Software with warning(s).' not in command_result.stdout_lines"

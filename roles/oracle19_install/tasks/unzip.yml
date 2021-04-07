@@ -1,0 +1,7 @@
+---
+  - name: "Unzip"
+    ansible.builtin.unarchive:
+      src: ./oracle19/Oracle19.3.0.zip
+      dest: "{{ oracle_home }}"
+      owner: "{{ oracle_owner }}"
+      group: "{{ oracle_group }}"

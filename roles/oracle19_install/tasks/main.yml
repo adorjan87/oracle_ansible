@@ -1,0 +1,16 @@
+ #tasks file for roles/folders
+---
+#- name: Include distribution specific variable
+#  include_vars: "vars_oracle{{ oracle_version }}.yml"
+
+- name: "Include all tasks"
+  include_tasks: "{{ item }}"
+  loop:
+    - preinstall.yml
+    - update_package.yml
+    - create_folders.yml
+    - oracle_exists.yml
+    - unzip.yml
+    - copy_response_file.yml
+    - install_oracle.yml
+    - root_scripts.yml

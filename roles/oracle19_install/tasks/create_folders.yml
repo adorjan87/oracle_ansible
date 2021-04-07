@@ -1,0 +1,11 @@
+---
+  - name: "Create oracle binarie's folders"
+    file:
+      path: '{{ item_directories.path }}'
+      state: '{{ item_directories.state }}'
+      owner: '{{ item_directories.owner }}'
+      group: '{{ item_directories.group }}'
+    loop: "{{ directories|flatten }}"
+    loop_control:
+      loop_var: item_directories
+    become: true

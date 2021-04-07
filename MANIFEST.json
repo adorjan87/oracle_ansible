@@ -1,0 +1,34 @@
+{
+ "collection_info": {
+  "namespace": "adorjan87",
+  "name": "oracle",
+  "version": "1.0.3",
+  "authors": [
+   "Adorjan Terjeki"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "oracle19",
+   "install",
+   "collection"
+  ],
+  "description": null,
+  "license": [
+   "GPL-2.0-or-later"
+  ],
+  "license_file": null,
+  "dependencies": {},
+  "repository": null,
+  "documentation": null,
+  "homepage": null,
+  "issues": null
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "b073f9cc5ddc1d0bc9bf84555ae50cc62b5f51d7941ae17d83dfdd968ddd2786",
+  "format": 1
+ },
+ "format": 1
+}
