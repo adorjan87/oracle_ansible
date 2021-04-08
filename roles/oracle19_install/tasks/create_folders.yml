@@ -8,4 +8,5 @@
     loop: "{{ directories|flatten }}"
     loop_control:
       loop_var: item_directories
+    #notify: grid_user_exists
     become: true
