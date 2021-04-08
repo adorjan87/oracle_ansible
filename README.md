@@ -11,14 +11,14 @@ Role variables
 Role usages Oracle OFA folder structure
 Available variables are listed below, along with default values (see roles/oracle19_install/defaults/main.yml):
 
-oracle_version: 19c  
-oracle_edition: EE  
-mount_point_name: /u01  
-oracle_home: /u01/app/oracle/product/19.3.0.0/dbhome_1  
-oracle_base: /u01/app/oracle  
-ora_inventory: /u01/app/oraInventory  
-oracle_owner: oracle  
-oracle_group: oinstall  
+oracle_version: 19c</br>  
+oracle_edition: EE</br>  
+mount_point_name: /u01</br>  
+oracle_home: /u01/app/oracle/product/19.3.0.0/dbhome_1</br>  
+oracle_base: /u01/app/oracle</br>  
+ora_inventory: /u01/app/oraInventory</br>  
+oracle_owner: oracle</br>  
+oracle_group: oinstall</br>  
 
 
 Usages
