@@ -21,12 +21,6 @@ oracle_owner: oracle
 oracle_group: oinstall
 
 
-<div id="foo" class="bar" border=3px>
-  sdsds
-  sdsd
-</div>
-
-
 Usages
 
 1. Have to copy oracle install file to oracle19_install/files/oracle19/Oracle19.3.0.zip
