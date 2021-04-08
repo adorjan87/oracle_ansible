@@ -1,0 +1,8 @@
+---
+- name: "Include all tasks"
+  include_tasks: "{{ item_tasks }}"
+  loop:
+    - preinstall.yml
+    - unzip_grid19.yml
+  loop_control:
+    loop_var: item_tasks

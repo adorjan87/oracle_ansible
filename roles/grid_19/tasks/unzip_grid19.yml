@@ -1,0 +1,7 @@
+---
+- name: "Unzip"
+  ansible.builtin.unarchive:
+    src: ./Oracle_Grid19.3.0.zip
+    dest: "{{ grid_home }}"
+    owner: "{{ grid_owner }}"
+    group: "{{ oracle_group }}"

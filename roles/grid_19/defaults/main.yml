@@ -1,0 +1,20 @@
+---
+root_mount_point: /u01
+grid_home: /u01/app/19.3.0/grid
+grid_base: /u01/app/grid
+ora_inventory: /u01/app/oraInventory
+
+grid_owner: grid
+oracle_owner: oracle
+oracle_group: oinstall
+
+
+preinstall_packges:
+  - { package: 'oracle-database-preinstall-19c', version: '19c' }
+
+
+directories:
+  - { path: '{{ root_mount_point }}', state: 'directory', owner: '{{ grid_owner }}', group: '{{ oracle_group }}' }
+  - { path: '{{ grid_home }}', state: 'directory', owner: '{{ grid_owner }}', group: '{{ oracle_group }}' }
+  - { path: '{{ grid_base }}', state: 'directory', owner: '{{ grid_owner }}', group: '{{ oracle_group }}' }
+  - { path: '{{ ora_inventory }}', state: 'directory', owner: '{{ grid_owner }}', group: '{{ oracle_group }}' }
