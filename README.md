@@ -35,4 +35,5 @@ Example
   tasks:
     - import_role:
         name: oracle19_install
+
 ########################################
