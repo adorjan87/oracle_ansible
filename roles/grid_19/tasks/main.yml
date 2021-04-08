@@ -3,6 +3,8 @@
   include_tasks: "{{ item_tasks }}"
   loop:
     - preinstall.yml
+    - create_grid_user.yml
+    - create_folders.yml
     - unzip_grid19.yml
   loop_control:
     loop_var: item_tasks

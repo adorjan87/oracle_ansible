@@ -1,0 +1,6 @@
+---
+- name: "Create grid user"
+  ansible.builtin.user:
+    name: grid
+    uid: 54331
+    groups: oinstall,dba

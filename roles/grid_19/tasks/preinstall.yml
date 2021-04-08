@@ -22,10 +22,3 @@
       - item_install.version == oracle_version
       - ansible_facts['distribution_major_version'] == "8"
   become: true
-
-
-- name: "Create grid user"
-  ansible.builtin.user:
-    name: grid
-    uid: 54331
-    groups: oinstall,dba
