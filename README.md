@@ -27,8 +27,9 @@ Usages
 1. Have to copy oracle install file to oracle19_install/files/oracle19/Oracle19.3.0.zip
 2. Run it from playbook.
 
-Example
-########################################
+**Example**
+
+```
 ---
 - hosts: oracle-servers
   collections: adorjan87.oracle
@@ -36,4 +37,4 @@ Example
     - import_role:
         name: oracle19_install
 
-########################################
+```
