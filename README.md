@@ -29,7 +29,7 @@ Usages
 
 **Example**
 
-```
+```ansible
 ---
 - hosts: oracle-servers
   collections: adorjan87.oracle
