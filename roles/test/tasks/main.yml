@@ -12,6 +12,6 @@
     character_set: "AL32UTF8"
     sys_password: "PASSWORD"
     system_password: "SYSTEM_PASS"
-  #register: result
+  register: result
 
-#- debug: var=result
+- debug: var=result
