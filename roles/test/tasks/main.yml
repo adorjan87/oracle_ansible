@@ -1,0 +1,17 @@
+---
+- name: "Teszt modul"
+  module1:
+    cdb: True
+    oracle_home: "/u01/app/oracle"
+    oracle_base: "/u01/app"
+    global_db_name: "GDB"
+    oracle_sid: "Ora_SID"
+    datafile_destination: "/opt/oracle"
+    recovery_area_destination: "/opt/arch"
+    storage_type: "ASM"
+    character_set: "AL32UTF8"
+    sys_password: "PASSWORD"
+    system_password: "SYSTEM_PASS"
+  #register: result
+
+#- debug: var=result

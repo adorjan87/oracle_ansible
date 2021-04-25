@@ -1,0 +1,71 @@
+from ansible.module_utils.basic import *
+import cx_Oracle
+import os
+
+
+
+class Oracle():
+
+    def __init__(self, module):
+
+        self.oracle_home = module.params['oracle_home']
+        self.oracle_base = module.params['oracle_base']
+        self.oracle_sid = module.params['oracle_sid']
+
+
+    def set_environment(self):
+
+        os.environ['ORACLE_HOME'] = self.oracle_home
+        os.environ['ORACLE_BASE'] = self.oracle_base
+        os.environ['ORACLE_SID'] = self.oracle_sid
+        pass
+
+    def connect(self):
+        pass
+
+
+    pass
+
+
+
+
+
+
+def main():
+    #module = AnsibleModule(argument_spec={})
+    #response = {"hello": "world"}
+    #module.exit_json(changed=False, meta=response)
+    
+    
+    default_values = {
+        'storage_type':('ASM','FS')
+    }
+
+    arguments = dict(
+        cdb=dict(required=True, type='bool'),
+        oracle_home=dict(required=True, type='str'),
+        oracle_base=dict(required=True, type='str'),
+        global_db_name=dict(required=True, type='str'),
+        oracle_sid=dict(required=True, type='str'),
+        datafile_destination=dict(required=True, type='str'),
+        recovery_area_destination=dict(required=True, type='str'),
+        storage_type=dict(type='str'),
+        character_set=dict(required=True,type='str'),
+        sys_password=dict(required=True, no_log=True),
+        system_password=dict(required=True, no_log=True)
+    )
+
+    module = AnsibleModule(argument_spec=arguments)
+    
+    obj1 = Oracle(module)
+    obj1.set_environment()
+
+
+
+    ##response = {"hello": "world"}
+    module.exit_json(changed=False, something_else="12345")
+
+  
+
+if __name__ == '__main__':
+    main()
