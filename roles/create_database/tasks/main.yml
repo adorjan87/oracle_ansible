@@ -1,0 +1,8 @@
+---
+# tasks file for roles/create_database
+- name: "Include all tasks"
+  include_tasks: "{{ item_tasks }}"
+  loop:
+    - create_database.yml
+  loop_control:
+    loop_var: item_tasks

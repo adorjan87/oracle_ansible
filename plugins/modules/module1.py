@@ -24,7 +24,7 @@ def main():
         datafile_destination=dict(required=True, type='str'),
         recovery_area_destination=dict(required=True, type='str'),
         storage_type=dict(type='str'),
-        character_set=dict(required=True,type='str'),
+        character_set=dict(required=False,type='str', default='AL32UTF8'),
         sys_password=dict(required=True, no_log=True),
         system_password=dict(required=True, no_log=True)
     )
