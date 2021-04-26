@@ -37,7 +37,8 @@ def main():
 
 
     ##response = {"hello": "world"}
-    module.exit_json(changed=False, something_else="12345")
+    ##module.exit_json(changed=False, something_else="12345")
+    module.exit_json(changed=False)
 
   
 
