@@ -7,12 +7,13 @@ class Oracle():
 
     def __init__(self, module):
 
+        self.template_name = module.params['template_name']
         self.oracle_home = module.params['oracle_home']
         self.oracle_base = module.params['oracle_base']
         self.oracle_sid = module.params['oracle_sid']
         self.oracle_sys_pwd = module.params['sys_password']
-        self.oracle_host = module.params['oracle_host'] 
-
+        #self.oracle_host = module.params['oracle_host'] 
+        
 
     def set_environment(self):
 
@@ -20,11 +21,14 @@ class Oracle():
         os.environ['ORACLE_BASE'] = self.oracle_base
         os.environ['ORACLE_SID'] = self.oracle_sid
         
+    
+    def create_database(self):
+        command = "dbca -silent -createDatabase "
+        command += '-templateName %s' % self.template_name
+        return command
+
 
     def connect(self):
         connection = cx_Oracle.connect("sys", self.oracle_sys_pwd, self.oracle_host, mode=cx_Oracle.SYSDBA, encoding="UTF-8")
         connection.close()
         pass
-
-
-    pass

@@ -1,20 +1,17 @@
 ---
-- name: "Teszt modul"
-  module1:
+- name: "Create database"
+  create_db:
     cdb: True
-    oracle_home: "/u01/app/oracle"
-    oracle_base: "/u01/app"
-    global_db_name: "GDB"
-    oracle_sid: "Ora_SID"
-    datafile_destination: "/opt/oracle"
-    recovery_area_destination: "/opt/arch"
+    oracle_home: "/u01/app/oracle/product/19.3.0/dbhome_1"
+    oracle_base: "/u01/app/oracle"
+    template_name: "General_Purpose.dbc"
+    global_db_name: "PROBA1"
+    oracle_sid: "PROBA1"
+    datafile_destination: "/u01/oradata"
     storage_type: "ASM"
     character_set: "AL32UTF8"
-    sys_password: "PASSWORD"
-    system_password: "SYSTEM_PASS"
-
-- template:
-    src: ./templates/dbca_ansible.j2
-    dest: /home/oracle/proba1.rsp
-    owner: "oracle"
-    group: "oinstall"
+    sys_password: "oracle123"
+    system_password: "oracle123"
+    redo_size: 100
+  register: result
+- debug: var=result

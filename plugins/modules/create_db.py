@@ -16,29 +16,35 @@ def main():
 
     arguments = dict(
         cdb=dict(required=True, type='bool'),
-        oracle_host=dict(required=False, type='str'),
+        create_container_db=dict(required=False, type='bool', default=False, aliases=['create_cdb']),
+        #oracle_host=dict(required=False, type='str'),
         oracle_home=dict(required=True, type='str'),
         oracle_base=dict(required=True, type='str'),
+        template_name=dict(required=False, type='str', default='General_Purpose.dbc'),
         global_db_name=dict(required=True, type='str'),
         oracle_sid=dict(required=True, type='str'),
         datafile_destination=dict(required=True, type='str'),
-        recovery_area_destination=dict(required=True, type='str'),
-        storage_type=dict(type='str'),
+        #recovery_area_destination=dict(required=True, type='str'),
+        enable_archive_log=dict(required=False, type='bool', default=False),
+        storage_type=dict(required=True, type='str', choices=["FS", "ASM"]),
         character_set=dict(required=False,type='str', default='AL32UTF8'),
         sys_password=dict(required=True, no_log=True),
-        system_password=dict(required=True, no_log=True)
+        system_password=dict(required=True, no_log=True),
+        redo_size=dict(required=False, type='int', default=50),
+        em_config=dict(required=False, type='bool', default=False)
     )
 
     module = AnsibleModule(argument_spec=arguments)
     
     obj1 = Oracle(module)
     obj1.set_environment()
+    
 
 
 
     ##response = {"hello": "world"}
-    ##module.exit_json(changed=False, something_else="12345")
-    module.exit_json(changed=False)
+    module.exit_json(changed=False, something_else=obj1.create_database())
+    ##module.exit_json(changed=False)
 
   
 

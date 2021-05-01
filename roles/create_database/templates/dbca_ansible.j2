@@ -39,7 +39,7 @@ gdbName={{ global_db_name }}
 # Default value : <db_name> specified in GDBNAME
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-sid=MINTA
+sid={{ oracle_sid }}
 
 #-----------------------------------------------------------------------------
 # Name          : databaseConfigType
@@ -408,7 +408,7 @@ datafileJarLocation={ORACLE_HOME}/assistants/dbca/templates/
 # Default value : $ORACLE_BASE/oradata
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-datafileDestination=/u01/{DB_UNIQUE_NAME}/
+datafileDestination={{ datafile_destination }}
 
 #-----------------------------------------------------------------------------
 # Name          : recoveryAreaDestination
@@ -418,7 +418,7 @@ datafileDestination=/u01/{DB_UNIQUE_NAME}/
 # Default value : $ORACLE_BASE/flash_recovery_area
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-recoveryAreaDestination={ORACLE_BASE}/fast_recovery_area/{DB_UNIQUE_NAME}
+recoveryAreaDestination={{ fra_location }}
 
 #-----------------------------------------------------------------------------
 # Name          : storageType
@@ -465,7 +465,7 @@ recoveryGroupName=
 # Default value : "US7ASCII"
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-characterSet=AL32UTF8
+characterSet={{ character_set }}
 
 #-----------------------------------------------------------------------------
 # Name          : nationalCharacterSet
@@ -543,7 +543,7 @@ variablesFile=
 # Default value : None
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-variables=ORACLE_BASE_HOME=/u01/app/oracle/product/19.3.0/dbhome_1,DB_UNIQUE_NAME=MINTA,ORACLE_BASE=/u01/app/oracle,PDB_NAME=,DB_NAME=MINTA,ORACLE_HOME=/u01/app/oracle/product/19.3.0/dbhome_1,SID=MINTA
+variables=ORACLE_BASE_HOME={{ oracle_home }},DB_UNIQUE_NAME={{ db_unique_name }},ORACLE_BASE={{ oracle_base }},PDB_NAME=,DB_NAME={{ db_name }},ORACLE_HOME={{ oracle_home }},SID={{ oracle_sid }}
 
 #-----------------------------------------------------------------------------
 # Name          : initParams
@@ -552,7 +552,7 @@ variables=ORACLE_BASE_HOME=/u01/app/oracle/product/19.3.0/dbhome_1,DB_UNIQUE_NAM
 # Default value : None
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-initParams=undo_tablespace=UNDOTBS1,sga_target=1179MB,db_block_size=8192BYTES,nls_language=AMERICAN,dispatchers=(PROTOCOL=TCP) (SERVICE=MINTAXDB),diagnostic_dest={ORACLE_BASE},remote_login_passwordfile=EXCLUSIVE,db_create_file_dest=/u01/{DB_UNIQUE_NAME}/,audit_file_dest={ORACLE_BASE}/admin/{DB_UNIQUE_NAME}/adump,processes=320,pga_aggregate_target=393MB,nls_territory=AMERICA,local_listener=LISTENER_MINTA,db_recovery_file_dest_size=8256MB,open_cursors=300,log_archive_format=%t_%s_%r.arc,compatible=19.0.0,db_name=MINTA,db_recovery_file_dest={ORACLE_BASE}/fast_recovery_area/{DB_UNIQUE_NAME},audit_trail=db
+initParams=undo_tablespace=UNDOTBS1,sga_target={{ sga_target }},db_block_size={{ db_block_size }},nls_language=AMERICAN,dispatchers=(PROTOCOL=TCP) (SERVICE=MINTAXDB),diagnostic_dest={ORACLE_BASE},remote_login_passwordfile=EXCLUSIVE,db_create_file_dest={{ datafile_destination }}/,audit_file_dest={ORACLE_BASE}/admin/{DB_UNIQUE_NAME}/adump,processes=320,pga_aggregate_target={{ pga_aggregate_target }},nls_territory=AMERICA,local_listener=LISTENER_MINTA,db_recovery_file_dest_size={{ fra_size }},open_cursors=300,log_archive_format={{ arc_format }},compatible=19.0.0,db_name={{ db_name }},db_recovery_file_dest={ORACLE_BASE}/fast_recovery_area/{DB_UNIQUE_NAME},audit_trail=db
 
 #-----------------------------------------------------------------------------
 # Name          : sampleSchema

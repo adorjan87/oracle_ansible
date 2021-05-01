@@ -1,2 +1,18 @@
 ---
 # defaults file for roles/create_database
+
+
+oracle_home: "/u01/app/oracle/product/19.3.0.0/dbhome_1"
+oracle_base: "/u01/app/oracle"
+global_db_name: "TESZT"
+oracle_sid: "TESZT"
+db_unique_name: "{{ oracle_sid }}"
+db_name: "{{ oracle_sid }}"
+datafile_destination: "/u02/data/{DB_UNIQUE_NAME}/" # /u01/{DB_UNIQUE_NAME}/
+fra_location: "{ORACLE_BASE}/fast_recovery_area/{DB_UNIQUE_NAME}"
+character_set: "AL32UTF8"
+sga_target: "1179MB"
+db_block_size: "8192BYTES"
+pga_aggregate_target: "393MB"
+fra_size: "8256MB"
+arc_format: "%t_%s_%r.arc"
