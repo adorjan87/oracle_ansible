@@ -14,9 +14,17 @@ def main():
         'storage_type':('ASM','FS')
     }
 
+
+    required_if = [
+        ('create_container_db', True, ['pdb_number', 'pdb_name'])
+    
+    ]
+
     arguments = dict(
-        cdb=dict(required=True, type='bool'),
+        #cdb=dict(required=False, type='bool'),
         create_container_db=dict(required=False, type='bool', default=False, aliases=['create_cdb']),
+        pdb_number=dict(required=False, type='int'),
+        pdb_name=dict(required=False, type='list'),
         #oracle_host=dict(required=False, type='str'),
         oracle_home=dict(required=True, type='str'),
         oracle_base=dict(required=True, type='str'),
@@ -34,16 +42,18 @@ def main():
         em_config=dict(required=False, type='bool', default=False)
     )
 
-    module = AnsibleModule(argument_spec=arguments)
+    module = AnsibleModule(argument_spec=arguments, required_if=required_if)
     
     obj1 = Oracle(module)
     obj1.set_environment()
+    obj1.create_database(module)
     
 
 
 
     ##response = {"hello": "world"}
-    module.exit_json(changed=False, something_else=obj1.create_database())
+    module.exit_json(changed=True)
+    #something_else=obj1.create_database(module)
     ##module.exit_json(changed=False)
 
   
