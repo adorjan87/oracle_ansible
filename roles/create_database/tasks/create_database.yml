@@ -3,10 +3,10 @@
   create_db:
     #cdb: True
     create_container_db: true
-    pdb_number: 3
-    pdb_name:
-      - elso
-      - masodik
+    #pdb_number: 3
+    #pdb_name:
+    #  - elso
+    #  - masodik
     oracle_home: "/u01/app/oracle/product/19.3.0/dbhome_1"
     oracle_base: "/u01/app/oracle"
     template_name: "General_Purpose.dbc"
@@ -14,6 +14,7 @@
     oracle_sid: "PROBA1"
     datafile_destination: "/u01/oradata"
     storage_type: "FS"
+    use_omf: False
     character_set: "AL32UTF8"
     sys_password: "Oracle123!"
     system_password: "MaciLaci123!"

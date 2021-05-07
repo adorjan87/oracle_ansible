@@ -29,7 +29,9 @@ class Oracle():
         oracle_character_set = module.params['character_set']
         create_container_db = module.params['create_container_db']
         number_of_pdbs = module.params['pdb_number']
+        pdb_name = module.params['pdb_name']
         storage_type = module.params['storage_type']
+        use_omf = module.params['use_omf']
         datafile_destination = module.params['datafile_destination']
         redo_size = module.params['redo_size']
         em_config = module.params['em_config']
@@ -40,6 +42,7 @@ class Oracle():
         command += " -gdbname %s" % global_db_name 
         command += " -sid %s" % self.oracle_sid
         command += " -storageType %s" % storage_type
+        command += " -useOMF %s" %use_omf
         command += " -datafileDestination %s" % datafile_destination
         command += " -sysPassword %s" % oracle_sys_pwd
         command += " -systemPassword %s" % oracle_system_password
@@ -47,7 +50,12 @@ class Oracle():
         command += " -redoLogFileSize %s" % redo_size
         command += " -emConfiguration %s" % em_config
         command += " -ignorePreReqs"
+
+        #if pdb_name != None and create_container_db is True:
+        #    command += " -pdbName %s" % pdb_name
         
+        #return command
+        #-useOMF
         return os.system(command)
 
 

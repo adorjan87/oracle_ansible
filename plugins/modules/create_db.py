@@ -35,6 +35,7 @@ def main():
         #recovery_area_destination=dict(required=True, type='str'),
         enable_archive_log=dict(required=False, type='bool', default=False),
         storage_type=dict(required=True, type='str', choices=["FS", "ASM"]),
+        use_omf=dict(required=False,type='bool',default=True),
         character_set=dict(required=False,type='str', default='AL32UTF8'),
         sys_password=dict(required=True, no_log=True),
         system_password=dict(required=True, no_log=True),
@@ -42,7 +43,8 @@ def main():
         em_config=dict(required=False, type='bool', default=False)
     )
 
-    module = AnsibleModule(argument_spec=arguments, required_if=required_if)
+    module = AnsibleModule(argument_spec=arguments)
+    #module = AnsibleModule(argument_spec=arguments, required_if=required_if)
     
     obj1 = Oracle(module)
     obj1.set_environment()
@@ -53,6 +55,7 @@ def main():
 
     ##response = {"hello": "world"}
     module.exit_json(changed=True)
+    #, something_else=obj1.create_database(module))
     #something_else=obj1.create_database(module)
     ##module.exit_json(changed=False)
 
