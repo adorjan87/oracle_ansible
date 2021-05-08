@@ -14,36 +14,39 @@ def main():
         'storage_type':('ASM','FS')
     }
 
-
+##('create_container_db', True, ['pdb_number', 'pdb_name']),
     required_if = [
-        ('create_container_db', True, ['pdb_number', 'pdb_name'])
+        ('enable_archive_log', True, ['fra_destination', 'archive_log_mode'])
     
     ]
 
     arguments = dict(
-        #cdb=dict(required=False, type='bool'),
         create_container_db=dict(required=False, type='bool', default=False, aliases=['create_cdb']),
+        
         pdb_number=dict(required=False, type='int'),
         pdb_name=dict(required=False, type='list'),
-        #oracle_host=dict(required=False, type='str'),
+        
         oracle_home=dict(required=True, type='str'),
         oracle_base=dict(required=True, type='str'),
         template_name=dict(required=False, type='str', default='General_Purpose.dbc'),
         global_db_name=dict(required=True, type='str'),
         oracle_sid=dict(required=True, type='str'),
         datafile_destination=dict(required=True, type='str'),
-        #recovery_area_destination=dict(required=True, type='str'),
+        
         enable_archive_log=dict(required=False, type='bool', default=False),
+        archive_log_mode=dict(required=False, type='str', choices=["AUTO", "MANUAL"], default="AUTO"),
+        fra_destination=dict(required=False, type='str'),
+        
         storage_type=dict(required=True, type='str', choices=["FS", "ASM"]),
-        use_omf=dict(required=False,type='bool',default=True),
-        character_set=dict(required=False,type='str', default='AL32UTF8'),
+        use_omf=dict(required=False, type='bool',default=True),
+        character_set=dict(required=False, type='str', default='AL32UTF8'),
         sys_password=dict(required=True, no_log=True),
         system_password=dict(required=True, no_log=True),
         redo_size=dict(required=False, type='int', default=50),
         em_config=dict(required=False, type='bool', default=False)
     )
 
-    module = AnsibleModule(argument_spec=arguments)
+    module = AnsibleModule(argument_spec=arguments, required_if=required_if)
     #module = AnsibleModule(argument_spec=arguments, required_if=required_if)
     
     obj1 = Oracle(module)

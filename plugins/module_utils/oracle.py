@@ -33,6 +33,13 @@ class Oracle():
         storage_type = module.params['storage_type']
         use_omf = module.params['use_omf']
         datafile_destination = module.params['datafile_destination']
+        
+        enable_archive_log = module.params['enable_archive_log']
+        archive_log_mode = module.params['archive_log_mode']
+        fra_destination = module.params['fra_destination']
+        
+        #archive_log_dest = module.params['archive_log_dest']
+        
         redo_size = module.params['redo_size']
         em_config = module.params['em_config']
 
@@ -44,6 +51,7 @@ class Oracle():
         command += " -storageType %s" % storage_type
         command += " -useOMF %s" %use_omf
         command += " -datafileDestination %s" % datafile_destination
+        command += " -enableArchive %s" % enable_archive_log
         command += " -sysPassword %s" % oracle_sys_pwd
         command += " -systemPassword %s" % oracle_system_password
         command += " -characterSet %s" % oracle_character_set
@@ -51,13 +59,21 @@ class Oracle():
         command += " -emConfiguration %s" % em_config
         command += " -ignorePreReqs"
 
-        #if pdb_name != None and create_container_db is True:
-        #    command += " -pdbName %s" % pdb_name
+        if enable_archive_log is True and fra_destination != None and os.path.exists(fra_destination) == True:
+        
+            command += " -recoveryAreaDestination %s" % fra_destination
+            command += " -archiveLogMode %s" % archive_log_mode
+        
+        else:
+            module.fail_json(changed=False, msg="fra_destination is not valid " + str(os.path.exists(fra_destination)))
+        
         
         #return command
-        #-useOMF
         return os.system(command)
 
+
+    def database_is_exist(self):
+        pass
 
     def connect(self):
         connection = cx_Oracle.connect("sys", self.oracle_sys_pwd, self.oracle_host, mode=cx_Oracle.SYSDBA, encoding="UTF-8")

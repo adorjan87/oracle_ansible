@@ -1,12 +1,7 @@
 ---
 - name: "Create database"
   create_db:
-    #cdb: True
-    create_container_db: true
-    #pdb_number: 3
-    #pdb_name:
-    #  - elso
-    #  - masodik
+    create_container_db: True
     oracle_home: "/u01/app/oracle/product/19.3.0/dbhome_1"
     oracle_base: "/u01/app/oracle"
     template_name: "General_Purpose.dbc"
@@ -14,12 +9,14 @@
     oracle_sid: "PROBA1"
     datafile_destination: "/u01/oradata"
     storage_type: "FS"
-    use_omf: False
+    use_omf: True
+    enable_archive_log: True
+    fra_destination: "/u01/fast_recovery_area"
     character_set: "AL32UTF8"
     sys_password: "Oracle123!"
     system_password: "MaciLaci123!"
     redo_size: 100
-  become: true
+  become: True
   become_user: oracle
   register: command_result
   #failed_when: "'[WARNING] [DBT-06208] The 'SYS' not in command_result.stdout_lines"
