@@ -1,3 +1,141 @@
+DOCUMENTATION = '''
+---
+
+module: create_db
+short_description: Create database module
+version_added: "1.0.0"
+
+description: 
+  - This module can create an oracle non CDB database or empty CDB database.
+  - You can not create RAC databas this module 
+  - It uses oracle dbca on silent mode.
+  - cx_Oracle module have to install target computer.
+
+options:
+    create_container_db:
+        description:
+                - It decides to use non CDB or empty CDB database.
+                - There are two options True or False.:
+                    - False: Create non CDB
+                    - True: Create empty CDB 
+        required: False
+        default: Faslse
+        aliases: ['create_cdb']
+        type: bool
+    
+    oracle_home:
+        description: 
+                - Where oracle have been installed.
+        required: True
+        type: str
+    
+    oracle_base: 
+        description:
+                - Oracle base location.
+        required: True
+        type: str
+    
+    template_name:
+        description:
+                - Oracle dbca basict template names
+        required: True
+        default: General_Purpose.dbc
+        type: str
+    
+    global_db_name:
+        description:
+                - Database FQDN name.
+        required: True
+        type: str
+    
+    oracle_sid:
+        description:
+                - Database name.
+        required: True
+        type: str
+    
+    datafile_destination:
+        description:
+                - Location of database files.
+        required: True
+        type: str
+
+    enable_archive_log:
+        description:
+                - Archivelog mode enable or not.
+        required: False
+        default: False
+        Type: bool
+    
+    archive_log_mode:
+        description:
+                - Archivelog switch mode.
+        required: False
+        default: Auto
+        Type: str
+        choices: ["AUTO", "MANUAL"]
+        default: AUTO  
+  
+    fra_destination:
+        description:
+                - FRA locaion in filesystem, or ASM
+        required: False
+        type: str
+
+    storage_type:
+        description:
+                - What kind of storage want to use: Filesystem or ASM
+        required: True
+        type: str
+        choices: ["FS", "ASM"]
+
+    use_omf:
+        description:
+                - Oracle managed files uses
+        required: False
+        type: bool
+        default: True
+
+    character_set:
+        description:
+                - Caratcter type
+        requiredd True
+        type: str
+        default: character_set
+    
+    sys_password:
+        description:
+                - Sys user password.
+        required: True
+        type: str
+
+    system_password:
+        description:
+                - System user password
+        required: True
+        type: str
+    
+    redo_size:
+        description:
+                - Online redo log size in MB
+        required: True
+        type: int
+        default: 50
+    
+    em_config:
+        descriptionj: 
+                - Enterprise manager agent configuration.
+        required: False
+        type: bool
+        default: False
+
+
+
+
+'''
+
+
+
 from ansible.module_utils.basic import *
 import cx_Oracle
 import os
@@ -5,10 +143,6 @@ from ansible_collections.adorjan87.oracle.plugins.module_utils.oracle import Ora
 
 
 def main():
-    #module = AnsibleModule(argument_spec={})
-    #response = {"hello": "world"}
-    #module.exit_json(changed=False, meta=response)
-    
     
     default_values = {
         'storage_type':('ASM','FS')
@@ -47,7 +181,6 @@ def main():
     )
 
     module = AnsibleModule(argument_spec=arguments, required_if=required_if)
-    #module = AnsibleModule(argument_spec=arguments, required_if=required_if)
     
     obj1 = Oracle(module)
     obj1.set_environment()
