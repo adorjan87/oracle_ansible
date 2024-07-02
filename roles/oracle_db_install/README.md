@@ -12,8 +12,7 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 ## Role Variables
 --------------
 
-* ***oracle_version***
-
+* ***oracle_version*** <br>
 You can addjust installed Orale version.  
 Suppoerted version: 19c, 23ai  
 Default:19c  
