@@ -1,9 +1,0 @@
----
-- name: "Install oracle version"
-  #include_tasks: "oracle19_install.yml"
-  include_tasks: "{{ item_version.file }}"
-  loop: "{{ installing_version|flatten }}"
-  loop_control:
-    loop_var: item_version
-  when:
-    - item_version.version == oracle_version

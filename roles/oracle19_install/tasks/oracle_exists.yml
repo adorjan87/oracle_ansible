@@ -1,9 +1,0 @@
----
-- name: Check if the dir is empty
-  command: ls '{{ oracle_home }}'
-  register: command_output
-
-- name: End play if directory isn't empty
-  fail:
-    msg: oracle_home is not empty
-  when: command_output.stdout != ""
