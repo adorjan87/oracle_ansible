@@ -18,7 +18,7 @@ You can addjust installed Orale version.
 Suppoerted version: 19c, 23ai  
 Default:19c  
 
-* ***oracle_edition***
+* ***oracle_edition*** <br>
 It can be Enterprise (EE) or Standard (SE) based on Oracle unattanded file.  
 Default: EE
 
