@@ -1,6 +1,6 @@
 # oracle_db_install
 
-This role install Oracle Database 19 or 23ai.
+This role installs Oracle Database 19 or 23ai.
 It doesn't contain or download any Oracle instaler. 
 You have to download it befor you use this role.  
 
