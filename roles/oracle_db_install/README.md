@@ -14,9 +14,14 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 
 * ***oracle_version***
 
-You can addjust installed Orale version.
-Suppoerted version: 19c, 23ai
-Default:19c
+You can addjust installed Orale version.  
+Suppoerted version: 19c, 23ai  
+Default:19c  
+
+* ***oracle_edition***
+It can be Enterprise (EE) or Standard (SE) based on Oracle unattanded file.  
+Default: EE
+
 
 Dependencies
 ------------
