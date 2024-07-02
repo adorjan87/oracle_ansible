@@ -1,0 +1,20 @@
+---
+- name: "Upgrade kmod with YUM"
+  yum:
+    name: "{{ item_upgrade_packages.upgrade }}"
+    state: latest
+  loop: "{{ upgrade_packages|flatten }}"
+  loop_control:
+    loop_var: item_upgrade_packages
+  when: ansible_facts['distribution_major_version'] == "7"
+  become: true
+
+- name: "Upgrade kmod with DNF"
+  dnf:
+    name: "{{ item_upgrade_packages.upgrade }}"
+    state: latest
+  loop: "{{ upgrade_packages|flatten }}"
+  loop_control:
+    loop_var: item_upgrade_packages
+  when: ansible_facts['distribution_major_version'] == "8"
+  become: true

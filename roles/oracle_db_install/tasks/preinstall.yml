@@ -1,0 +1,24 @@
+---
+- name: "Preinstall package with YUM"
+  yum:
+    name: "{{ item_install.package }}"
+    state: present
+  loop: "{{ preinstall_packges|flatten }}"
+  loop_control:
+    loop_var: item_install
+  when:
+      - item_install.version == oracle_version
+      - ansible_facts['distribution_major_version'] == "7"
+  become: true
+
+- name: "Preinstall package with DNF"
+  dnf:
+    name: "{{ item_install.package }}"
+    state: present
+  loop: "{{ preinstall_packges|flatten }}"
+  loop_control:
+    loop_var: item_install
+  when:
+      - item_install.version == oracle_version
+      - ansible_facts['distribution_major_version'] == "8"
+  become: true

@@ -1,0 +1,8 @@
+---
+- name: "Run  orainstRoot script"
+  shell: "{{ ora_inventory }}/orainstRoot.sh"
+  become: true
+
+- name: "Run root.sh script"
+  shell: "{{ oracle_home }}/root.sh"
+  become: true
